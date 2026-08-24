@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One month</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0f1319;
+  --card:#171d27;
+  --card-2:#1e2634;
+  --ribbon:#4a7fb5;
+  --ribbon-dim:#2f5a86;
+  --ink:#e9ecf1;
+  --ink-soft:#9aa4b4;
+  --ink-faint:#68738a;
+  --gray-print:#c9ccd3;
+  --line:rgba(233,236,241,.14);
+  --line-strong:rgba(233,236,241,.28);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--night);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.65;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px 16px 40px;
+  -webkit-font-smoothing:antialiased;
+}
+.stage{width:100%;max-width:460px}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:34px 26px 30px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--ribbon);
+}
+.eyebrow{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 18px;
+}
+h1{
+  font-family:"Instrument Serif",Georgia,serif;
+  font-weight:400;font-size:31px;line-height:1.15;
+  margin:0 0 12px;letter-spacing:.01em;
+}
+.body{font-size:15px;color:var(--ink-soft);margin:0 0 24px}
+.row{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+button{font-family:inherit;font-size:15px;cursor:pointer}
+.chip{
+  background:transparent;color:var(--ink);
+  border:1px solid var(--line-strong);border-radius:999px;
+  padding:10px 16px;transition:background .15s,border-color .15s;
+}
+.chip:hover{border-color:var(--ribbon)}
+.chip[aria-pressed="true"]{background:var(--ribbon);border-color:var(--ribbon);color:#0f1319;font-weight:500}
+.go{
+  background:var(--ribbon);color:#0f1319;font-weight:500;
+  border:none;border-radius:999px;padding:14px 32px;font-size:16px;
+  margin-top:22px;transition:transform .12s,filter .15s;
+}
+.go:hover{filter:brightness(1.08)}
+.go:active{transform:scale(.97)}
+.nope{
+  background:transparent;color:var(--ink-soft);
+  border:1px solid var(--line-strong);border-radius:999px;padding:12px 24px;
+  transition:transform .2s ease;
+}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ribbon);outline-offset:3px}
+.tease{font-size:14px;color:var(--ink-faint);min-height:22px;margin:16px 0 0;font-style:italic}
+.err{color:#e8846b;font-size:13.5px;margin:12px 0 0;min-height:20px}
+.ticket{
+  border:1px dashed var(--line-strong);border-radius:14px;
+  padding:16px 16px 12px;margin-top:6px;text-align:left;
+  background:var(--card-2);
+}
+.tl{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.tl:last-child{border-bottom:none}
+.tl dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;margin:0}
+.tl dd{margin:0;font-size:14.5px;text-align:right;color:var(--ink)}
+dl{margin:0}
+.serifline{font-family:"Instrument Serif",Georgia,serif;font-size:19px;font-style:italic;color:var(--ink-soft);margin:22px 0 0}
+input[type=text]{
+  font-family:inherit;font-size:19px;letter-spacing:.3em;text-align:center;
+  background:var(--card-2);color:var(--ink);
+  border:1px solid var(--line-strong);border-radius:12px;
+  padding:14px 12px;width:200px;text-transform:uppercase;
+}
+.ghost{
+  background:transparent;color:var(--ink-soft);border:none;
+  text-decoration:underline;text-underline-offset:4px;
+  font-size:14px;margin-top:14px;padding:6px;
+}
+.dots{margin-top:22px;font-size:11px;letter-spacing:.4em;color:var(--ink-faint)}
+.env{font-size:40px;line-height:1;color:var(--ribbon);margin-bottom:6px}
+svg{display:block;margin:0 auto}
+.locked{opacity:.22;filter:grayscale(1)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="card">
+
+<section id="s0">
+  <p class="eyebrow">One month, hand delivered over internet</p>
+  <div class="env">✦</div>
+  <h1>Something arrived for you</h1>
+  <p class="body">Thirty one days ago you said yes to something. This is the paperwork.</p>
+  <button class="go" onclick="go(1)">Open it</button>
+</section>
+
+<section id="s1" hidden>
+  <p class="eyebrow">Section A — the actual question</p>
+  <h1>Watch a movie with me tonight?</h1>
+  <p class="body">Your screen, my screen, one countdown. I've cleared my whole night. It was already empty. Still counts.</p>
+  <div class="row">
+    <button class="go" style="margin-top:0" onclick="go(2)">Yes</button>
+    <button class="nope" id="nope">No</button>
+  </div>
+  <p class="tease" id="tease"></p>
+</section>
+
+<section id="s2" hidden>
+  <p class="eyebrow">Section B — snack compatibility test</p>
+  <h1>A genie appears. Snacks. Right now.</h1>
+  <p class="body">Take as many as you want, he's not counting. Answer fast and honestly — this reveals more about you than any personality quiz.</p>
+  <div class="row" id="snacks">
+    <button class="chip" aria-pressed="false">Cup noodles</button>
+    <button class="chip" aria-pressed="false">Ice cream</button>
+    <button class="chip" aria-pressed="false">Butterscotch ice cream</button>
+    <button class="chip" aria-pressed="false">Popcorn</button>
+    <button class="chip" aria-pressed="false">Chocolate</button>
+    <button class="chip" aria-pressed="false">Gummies</button>
+    <button class="chip" aria-pressed="false">Something spicy</button>
+    <button class="chip" aria-pressed="false">Something sweet</button>
+  </div>
+  <p class="err" id="e2"></p>
+  <button class="go" onclick="go(3)">Locked in</button>
+  <p class="dots">◆ ◇ ◇ ◇</p>
+</section>
+
+<section id="s3" hidden>
+  <p class="eyebrow">Section C — follow-up, purely scientific</p>
+  <h1>And to drink?</h1>
+  <p class="body">Again, plural is allowed. The genie is being unusually generous tonight. Almost suspiciously so.</p>
+  <div class="row" id="drinks">
+    <button class="chip" aria-pressed="false">Litchi juice</button>
+    <button class="chip" aria-pressed="false">Green tea</button>
+    <button class="chip" aria-pressed="false">Milkshake</button>
+    <button class="chip" aria-pressed="false">Cold coffee</button>
+    <button class="chip" aria-pressed="false">Something fizzy</button>
+    <button class="chip" aria-pressed="false">Just water, I'm boring</button>
+  </div>
+  <p class="err" id="e3"></p>
+  <button class="go" onclick="go(4)">Next</button>
+  <p class="dots">◆ ◆ ◇ ◇</p>
+</section>
+
+<section id="s4" hidden>
+  <p class="eyebrow">Section D — seating arrangement</p>
+  <h1>Since I can't sit next to you</h1>
+  <p class="body">Small creatures will hold my seat. Hire as many as the job needs, and one shall sit on my behalf.</p>
+  <div class="row" id="pets">
+    <button class="chip" aria-pressed="false">Unicorn</button>
+    <button class="chip" aria-pressed="false">Cat</button>
+    <button class="chip" aria-pressed="false">Bear</button>
+    <button class="chip" aria-pressed="false">Duck</button>
+    <button class="chip" aria-pressed="false">Pup</button>
+    <button class="chip" aria-pressed="false">Elephant</button>
+  </div>
+  <p class="err" id="e4"></p>
+  <button class="go" onclick="go(5)">Hired</button>
+  <p class="dots">◆ ◆ ◆ ◇</p>
+</section>
+
+<section id="s5" hidden>
+  <p class="eyebrow">Section E — final question, no reason at all</p>
+  <h1>Pick a colour</h1>
+  <p class="body">This is for the ticket. That is the only reason I am asking. There is no other reason. Stop looking at me like that.</p>
+  <div class="row" id="colors">
+    <button class="chip" aria-pressed="false" data-hex="#b3a5e8">Lavender</button>
+    <button class="chip" aria-pressed="false" data-hex="#7fb5e0">Sky blue</button>
+    <button class="chip" aria-pressed="false" data-hex="#86d3b4">Mint</button>
+    <button class="chip" aria-pressed="false" data-hex="#f0a882">Peach</button>
+    <button class="chip" aria-pressed="false" data-hex="#eb9bbd">Pink</button>
+    <button class="chip" aria-pressed="false" data-hex="#e8c96a">Yellow</button>
+  </div>
+  <p class="err" id="e5"></p>
+  <button class="go" onclick="go(6)">Confirm</button>
+  <p class="dots">◆ ◆ ◆ ◆</p>
+</section>
+
+<section id="s6" hidden>
+  <p class="eyebrow">Confirmed — admit two, separately</p>
+  <h1>One ticket. Two entries. Two houses.</h1>
+  <p class="body">Non-refundable, non-transferable, and I am quietly thrilled.</p>
+  <dl class="ticket">
+    <div class="tl"><dt>Occasion</dt><dd>One month of us</dd></div>
+    <div class="tl"><dt>Feature</dt><dd>To Me, The One Who Loved You</dd></div>
+    <div class="tl"><dt>Guest of honour</dt><dd id="tHer">—</dd></div>
+    <div class="tl"><dt>With</dt><dd id="tMe">—</dd></div>
+    <div class="tl"><dt>Screening</dt><dd>2:00 am, obviously</dd></div>
+    <div class="tl"><dt>Seats</dt><dd>A1 and A2, different pin codes</dd></div>
+    <div class="tl"><dt>Seat filler</dt><dd id="tPet">—</dd></div>
+    <div class="tl"><dt>On record</dt><dd id="tSnack">—</dd></div>
+    <div class="tl"><dt>Dress code</dt><dd>Whatever you already have on</dd></div>
+    <div class="tl"><dt>Ticket colour</dt><dd id="tColor">—</dd></div>
+  </dl>
+  <button class="go" id="sendBtn">Send my ticket to him</button>
+  <br><button class="ghost" id="copyBtn">or copy it and paste it yourself</button>
+  <p class="err" id="copied" style="color:var(--ribbon)"></p>
+  <p class="serifline">Countdown is three, two, one, play. Any desync is a personal betrayal and I will bring it up for years.</p>
+</section>
+
+<section id="s7" hidden>
+  <p class="eyebrow">Page two — sealed</p>
+  <svg class="locked" width="150" height="140" viewBox="0 0 220 200" role="img" aria-label="A wrapped gift box, greyed out and locked">
+    <ellipse cx="96" cy="48" rx="17" ry="11" fill="#4a7fb5" transform="rotate(-25 96 48)"/>
+    <ellipse cx="124" cy="48" rx="17" ry="11" fill="#4a7fb5" transform="rotate(25 124 48)"/>
+    <circle cx="110" cy="54" r="9" fill="#2f5a86"/>
+    <rect x="50" y="88" width="120" height="94" rx="6" fill="#c9ccd3"/>
+    <rect x="44" y="64" width="132" height="26" rx="5" fill="#c9ccd3"/>
+    <rect x="96" y="64" width="28" height="118" fill="#4a7fb5"/>
+  </svg>
+  <h1 style="margin-top:16px">There's a second page</h1>
+  <p class="body">It doesn't open yet. A code is coming to you separately. Don't ask me when. Actually do, it's fun for me.</p>
+  <input type="text" id="code" maxlength="10" placeholder="• • • •" autocomplete="off" aria-label="Unlock code">
+  <p class="err" id="e7"></p>
+  <button class="go" onclick="unlock()">Unlock</button>
+</section>
+
+<section id="s8" hidden>
+  <p class="eyebrow">Parcel two of two — not shipped</p>
+  <svg width="176" height="164" viewBox="0 0 220 200" role="img" aria-label="A wrapped gift box drawn as a work in progress">
+    <ellipse cx="96" cy="48" rx="17" ry="11" fill="#4a7fb5" stroke="#2f5a86" stroke-width="1.5" transform="rotate(-25 96 48)"/>
+    <ellipse cx="124" cy="48" rx="17" ry="11" fill="#4a7fb5" stroke="#2f5a86" stroke-width="1.5" transform="rotate(25 124 48)"/>
+    <path d="M104 58 L92 76" stroke="#2f5a86" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M116 58 L128 76" stroke="#2f5a86" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <circle cx="110" cy="54" r="9" fill="#2f5a86"/>
+    <rect x="50" y="88" width="120" height="94" rx="6" fill="#c9ccd3" stroke="#8b8f98" stroke-width="1.5"/>
+    <rect x="44" y="64" width="132" height="26" rx="5" fill="#c9ccd3" stroke="#8b8f98" stroke-width="1.5"/>
+    <rect x="96" y="64" width="28" height="118" fill="#4a7fb5" stroke="#2f5a86" stroke-width="1.5"/>
+    <rect x="64" y="100" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="64" y="118" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="64" y="136" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="64" y="154" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="138" y="100" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="138" y="118" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="138" y="136" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="138" y="154" width="18" height="8" rx="4" fill="#a9adb6"/>
+    <rect x="104" y="100" width="12" height="8" rx="4" fill="#26456a"/>
+    <rect x="104" y="118" width="12" height="8" rx="4" fill="#26456a"/>
+    <rect x="104" y="136" width="12" height="8" rx="4" fill="#26456a"/>
+    <rect x="104" y="154" width="12" height="8" rx="4" fill="#26456a"/>
+    <path d="M30 88 L30 182" stroke="#68738a" stroke-width="0.8" stroke-dasharray="3 3" fill="none"/>
+    <path d="M26 88 L34 88 M26 182 L34 182" stroke="#68738a" stroke-width="0.8" fill="none"/>
+  </svg>
+  <h1 style="margin-top:18px">This one isn't ready yet</h1>
+  <p class="body">It's being made one layer at a time, which is annoyingly on theme. It arrives when it arrives. Tonight you only get me, some snacks, and hired animals.</p>
+  <p class="serifline">One month down. I'd like to keep going, if that's alright with you.</p>
+</section>
+
+</div>
+</div>
+
+<script>
+/* ─────────── EDIT THESE FOUR LINES ─────────── */
+var HER   = "Harini";
+var ME    = "Vijay";
+var PHONE = "917598687133";   // your number, country code, digits only, no +
+var CODE  = "2407";           // text her this once the delivery lands
+/* ──────────────────────────────────────────── */
+
+var snacks=[], drinks=[], pets=[], colour=null, colourHex=null, ti=0;
+var teases=["Bold. Try again.","The button is shy. Not my fault.","It moved. I saw nothing.","This is becoming cardio.","Fine, it's rigged. I confess.","Yes is right there. Just saying."];
+
+function show(n){for(var i=0;i<9;i++){document.getElementById('s'+i).hidden=(i!==n)}window.scrollTo(0,0)}
+
+var nope=document.getElementById('nope');
+function dodge(){
+  nope.style.transform='translate('+Math.round(Math.random()*150-75)+'px,'+Math.round(Math.random()*60-30)+'px)';
+  document.getElementById('tease').textContent=teases[ti%teases.length];ti++;
+}
+nope.addEventListener('mouseenter',dodge);
+nope.addEventListener('click',function(e){e.preventDefault();dodge()});
+
+var errOf={snacks:'e2',drinks:'e3',pets:'e4',colors:'e5'};
+
+['snacks','drinks','pets'].forEach(function(g){
+  var wrap=document.getElementById(g);
+  wrap.addEventListener('click',function(e){
+    var b=e.target.closest('.chip'); if(!b) return;
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true');
+    document.getElementById(errOf[g]).textContent='';
+  });
+});
+
+var colorWrap=document.getElementById('colors');
+colorWrap.addEventListener('click',function(e){
+  var b=e.target.closest('.chip'); if(!b) return;
+  colorWrap.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');c.style.background='';c.style.borderColor='';c.style.color=''});
+  b.setAttribute('aria-pressed','true');
+  b.style.background=b.dataset.hex; b.style.borderColor=b.dataset.hex; b.style.color='#0f1319';
+  document.getElementById('e5').textContent='';
+});
+
+function many(g){
+  var out=[];
+  document.querySelectorAll('#'+g+' .chip[aria-pressed="true"]').forEach(function(b){out.push(b.textContent)});
+  return out;
+}
+
+function go(n){
+  if(n===3){snacks=many('snacks'); if(!snacks.length){document.getElementById('e2').textContent='Pick at least one. The genie has other appointments.';return}}
+  if(n===4){drinks=many('drinks'); if(!drinks.length){document.getElementById('e3').textContent="At least one drink. Genie's orders.";return}}
+  if(n===5){pets=many('pets'); if(!pets.length){document.getElementById('e4').textContent='Someone has to hold my seat. Hire at least one.';return}}
+  if(n===6){
+    var c=document.querySelector('#colors .chip[aria-pressed="true"]');
+    if(!c){document.getElementById('e5').textContent='A colour. Any colour. It matters for reasons.';return}
+    colour=c.textContent; colourHex=c.dataset.hex;
+    document.documentElement.style.setProperty('--ribbon',colourHex);
+    document.getElementById('tHer').textContent=HER;
+    document.getElementById('tMe').textContent=ME;
+    document.getElementById('tPet').textContent=pets.join(', ')+' — reporting for duty';
+    document.getElementById('tSnack').textContent=snacks.join(', ')+' + '+drinks.join(', ');
+    document.getElementById('tColor').textContent=colour;
+  }
+  show(n);
+}
+
+function ticketText(){
+  return "My ticket is confirmed.\n\nSnacks: "+snacks.join(", ")+"\nDrinks: "+drinks.join(", ")+"\nSeat fillers: "+pets.join(", ")+"\nColour: "+colour+"\n\n2 am. Don't be late.";
+}
+document.getElementById('sendBtn').addEventListener('click',function(){
+  window.open('https://wa.me/'+PHONE+'?text='+encodeURIComponent(ticketText()),'_blank');
+  setTimeout(function(){show(7)},600);
+});
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var t=ticketText(), done=function(){document.getElementById('copied').textContent='Copied. Paste it to him.';setTimeout(function(){show(7)},1200)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}
+  else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(err){}document.body.removeChild(a);done()}
+});
+
+function unlock(){
+  var v=document.getElementById('code').value.trim().toUpperCase();
+  if(v===CODE.toUpperCase()){show(8)}
+  else{document.getElementById('e7').textContent=v?'Not it. Nice try though.':'A code is required. I said so.'}
+}
+document.getElementById('code').addEventListener('keydown',function(e){if(e.key==='Enter')unlock()});
+document.getElementById('code').addEventListener('input',function(){document.getElementById('e7').textContent=''});
+
+show(0);
+</script>
+</body>
+</html>
